@@ -1,9 +1,4 @@
-#include <iostream>
-
-#include <player.hpp>
-#include <order.hpp>
-#include <chaos.hpp>
-#include <utils.hpp>
+#include <lib.hpp>
 
 int main()
 {

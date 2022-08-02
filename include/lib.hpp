@@ -1,9 +1,58 @@
 #pragma once
-
+#include <cstring>
+#include <string>
 #include <iostream>
 #include <sstream>
 
-#include "player.hpp"
+#define KEYWORD_START "Start"
+#define KEYWORD_QUIT "Quit"
+
+#define ROW_TO_LETTER(r) char('A' + t)
+#define COL_TO_LETTER(c) char('a' + c)
+
+#define LETTER_TO_ROW(l) int(l - 'A')
+#define LETTER_TO_COL(l) int(l - 'a')
+
+class Player
+{
+protected:
+    unsigned short current_color;
+    unsigned short board[7][7];
+
+public:
+    Player() : current_color(-1)
+    {
+        memset(board, 0, sizeof(board));
+    }
+
+    virtual void parse(const std::string &input) = 0;
+    virtual void respond() = 0;
+
+    virtual ~Player() {}
+};
+
+#pragma once
+
+class Order : public Player
+{
+    std::string answer;
+
+public:
+    Order() : Player()
+    {
+    }
+    virtual void parse(const std::string &input) override
+    {
+        current_color = std::stoi(input.substr(0, 1));
+        board[input[1] - 'A'][input[2] - 'a'] = current_color;
+        answer = input.substr(1, 3) + input.substr(1, 3);
+    }
+
+    virtual void respond() override
+    {
+        std::cout << answer;
+    }
+};
 
 class Chaos : public Player
 {
