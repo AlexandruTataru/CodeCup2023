@@ -1,6 +1,8 @@
-#include <iostream>
+#define CATCH_CONFIG_MAIN
+#include <catch2/catch.hpp>
+#include <lib.hpp>
 
-int main()
+TEST_CASE("Quick check", "[defines]")
 {
-    std::cout << "Executing tests" << std::endl;
+    REQUIRE(ROW_TO_LETTER(0) == 'A');
 }

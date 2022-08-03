@@ -6,10 +6,9 @@ project(
   DESCRIPTION "Bot for CodeCup 2023 competition"
   LANGUAGES CXX)
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  set(CMAKE_CXX_EXTENSIONS OFF)
-  include(CTest)
-endif()
+set(CMAKE_CXX_EXTENSIONS OFF)
+include(FetchContent)
+include(CTest)
 
 add_subdirectory(src)
 

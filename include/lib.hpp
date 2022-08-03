@@ -7,7 +7,7 @@
 #define KEYWORD_START "Start"
 #define KEYWORD_QUIT "Quit"
 
-#define ROW_TO_LETTER(r) char('A' + t)
+#define ROW_TO_LETTER(r) char('A' + r)
 #define COL_TO_LETTER(c) char('a' + c)
 
 #define LETTER_TO_ROW(l) int(l - 'A')
@@ -50,7 +50,8 @@ public:
 
     virtual void respond() override
     {
-        std::cout << answer;
+        std::cout << answer << std::endl
+                  << std::flush;
     }
 };
 
@@ -90,7 +91,8 @@ public:
                     std::stringstream ss;
                     ss << static_cast<char>('A' + r);
                     ss << static_cast<char>('a' + c);
-                    std::cout << ss.str();
+                    std::cout << ss.str() << std::endl
+                              << std::flush;
                     return;
                 }
             }
