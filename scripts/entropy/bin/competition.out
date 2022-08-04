@@ -5,36 +5,36 @@ Skipping player2 - player1 since binaries didn't change.
 Skipping player2 - player3 since binaries didn't change.
 Skipping player3 - player1 since binaries didn't change.
 Skipping player3 - player2 since binaries didn't change.
-2022-08-04 21:05:40 bot wins match 1! bot - player1: 226 - 174
-2022-08-04 21:05:40 bot wins match 3! bot - player1: 214 - 186
-2022-08-04 21:05:40 bot wins match 2! bot - player1: 234 - 166
-2022-08-04 21:05:40 bot wins match 5! bot - player1: 225 - 175
-2022-08-04 21:05:40 player2 wins match 1! bot - player2: 169 - 231
-2022-08-04 21:05:40 player2 wins match 2! bot - player2: 146 - 254
-2022-08-04 21:05:40 bot wins match 4! bot - player1: 222 - 178
-2022-08-04 21:05:40 player2 wins match 3! bot - player2: 172 - 228
-2022-08-04 21:05:40 player2 wins match 4! bot - player2: 166 - 234
-2022-08-04 21:05:40 player2 wins match 5! bot - player2: 171 - 229
-2022-08-04 21:05:41 player3 wins match 2! bot - player3: 166 - 234
-2022-08-04 21:05:41 player3 wins match 1! bot - player3: 151 - 249
-2022-08-04 21:05:41 player3 wins match 3! bot - player3: 146 - 254
-2022-08-04 21:05:41 player1 wins match 1! player1 - bot: 226 - 174
-2022-08-04 21:05:41 player1 wins match 2! player1 - bot: 233 - 167
-2022-08-04 21:05:41 player3 wins match 4! bot - player3: 169 - 231
-2022-08-04 21:05:41 player3 wins match 5! bot - player3: 158 - 242
-2022-08-04 21:05:41 player1 wins match 3! player1 - bot: 233 - 167
-2022-08-04 21:05:41 player1 wins match 4! player1 - bot: 213 - 187
-2022-08-04 21:05:41 player1 wins match 5! player1 - bot: 233 - 167
-2022-08-04 21:05:41 player2 wins match 1! player2 - bot: 251 - 149
-2022-08-04 21:05:41 player2 wins match 2! player2 - bot: 280 - 120
-2022-08-04 21:05:41 player2 wins match 3! player2 - bot: 275 - 125
-2022-08-04 21:05:41 player2 wins match 4! player2 - bot: 263 - 137
-2022-08-04 21:05:41 player2 wins match 5! player2 - bot: 260 - 140
-2022-08-04 21:05:41 player3 wins match 1! player3 - bot: 276 - 124
-2022-08-04 21:05:41 player3 wins match 2! player3 - bot: 280 - 120
-2022-08-04 21:05:42 player3 wins match 3! player3 - bot: 275 - 125
-2022-08-04 21:05:42 player3 wins match 4! player3 - bot: 280 - 120
- 50230  player3                         
- 45123  player2                         
- 31770  player1                         
-  4877  bot                             
+2022-08-04 21:49:33 bot wins match 4! bot - player1: 235 - 165
+2022-08-04 21:49:33 bot wins match 1! bot - player1: 203 - 197
+2022-08-04 21:49:33 bot wins match 3! bot - player1: 222 - 178
+2022-08-04 21:49:33 bot wins match 2! bot - player1: 212 - 188
+2022-08-04 21:49:33 player2 wins match 2! bot - player2: 182 - 218
+2022-08-04 21:49:33 player2 wins match 1! bot - player2: 164 - 236
+2022-08-04 21:49:33 bot wins match 5! bot - player1: 213 - 187
+2022-08-04 21:49:33 player2 wins match 4! bot - player2: 174 - 226
+2022-08-04 21:49:33 player2 wins match 3! bot - player2: 137 - 263
+2022-08-04 21:49:33 player2 wins match 5! bot - player2: 190 - 210
+2022-08-04 21:49:33 player3 wins match 1! bot - player3: 122 - 278
+2022-08-04 21:49:33 player3 wins match 2! bot - player3: 160 - 240
+2022-08-04 21:49:33 player3 wins match 3! bot - player3: 149 - 251
+2022-08-04 21:49:33 player3 wins match 4! bot - player3: 169 - 231
+2022-08-04 21:49:34 player1 wins match 1! player1 - bot: 240 - 160
+2022-08-04 21:49:34 player1 wins match 2! player1 - bot: 238 - 162
+2022-08-04 21:49:34 player1 wins match 3! player1 - bot: 204 - 196
+2022-08-04 21:49:34 player3 wins match 5! bot - player3: 168 - 232
+2022-08-04 21:49:34 bot wins match 4! player1 - bot: 196 - 204
+2022-08-04 21:49:34 player1 wins match 5! player1 - bot: 226 - 174
+2022-08-04 21:49:34 player2 wins match 1! player2 - bot: 271 - 129
+2022-08-04 21:49:34 player2 wins match 2! player2 - bot: 271 - 129
+2022-08-04 21:49:34 player2 wins match 3! player2 - bot: 272 - 128
+2022-08-04 21:49:34 player2 wins match 4! player2 - bot: 273 - 127
+2022-08-04 21:49:34 player2 wins match 5! player2 - bot: 264 - 136
+2022-08-04 21:49:34 player3 wins match 1! player3 - bot: 276 - 124
+2022-08-04 21:49:34 player3 wins match 2! player3 - bot: 278 - 122
+2022-08-04 21:49:34 player3 wins match 3! player3 - bot: 280 - 120
+2022-08-04 21:49:34 player3 wins match 4! player3 - bot: 276 - 124
+ 50249  player3                         
+ 45122  player2                         
+ 31772  player1                         
+  4857  bot                             
