@@ -1,0 +1,4 @@
+2
+bot bot_chaos.txt player2 player2black.txt
+player2 player2white.txt bot bot_order.txt
+

@@ -1,2 +1,5 @@
 .vscode
 *build*
+scripts/entropy/playerlogs/*
+scripts/entropy/refereelogs/*
+scripts/entropy/competitionlogs/*
