@@ -9,6 +9,7 @@ cd ..
 rm -rf ./entropy/refereelogs/*
 rm -rf ./entropy/playerlogs/*
 cd entropy/bin
+rm -rf bot
 cp ../../build/src/bot .
 ./caiaio
 ./competition.sh bot player1 player2 player3 > competition.out

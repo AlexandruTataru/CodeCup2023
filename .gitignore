@@ -3,3 +3,4 @@
 scripts/entropy/playerlogs/*
 scripts/entropy/refereelogs/*
 scripts/entropy/competitionlogs/*
+scripts/__pycache__

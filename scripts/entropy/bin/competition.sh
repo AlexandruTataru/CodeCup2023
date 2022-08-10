@@ -10,7 +10,7 @@ STUBS=$BASE/competition-stubs
 RES=$BASE/competition-results
 
 # Number of matches to play per pair of players.
-NUM_PER_PAIR=5
+NUM_PER_PAIR=10
 # Number of milliseconds to allow per player per game.
 PLAYER_TIME_LIMIT=30000
 

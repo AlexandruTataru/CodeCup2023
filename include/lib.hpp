@@ -1,8 +1,12 @@
 #pragma once
 #include <cstring>
+#include <cstdlib>
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <vector>
+
+#include <time.h>
 
 #define KEYWORD_START "Start"
 #define KEYWORD_QUIT "Quit"
@@ -30,8 +34,6 @@ public:
 
     virtual ~Player() {}
 };
-
-#pragma once
 
 class Order : public Player
 {
@@ -81,21 +83,26 @@ public:
     {
         if (is_update)
             return;
+        std::vector<int> availableMoves;
+        srand(time(NULL));
         for (unsigned short r = 0; r < 7; ++r)
         {
             for (unsigned short c = 0; c < 7; ++c)
             {
                 if (board[r][c] == 0)
                 {
-                    board[r][c] = current_color;
-                    std::stringstream ss;
-                    ss << static_cast<char>('A' + r);
-                    ss << static_cast<char>('a' + c);
-                    std::cout << ss.str() << std::endl
-                              << std::flush;
-                    return;
+                    availableMoves.push_back(r * 10 + c);
                 }
             }
         }
+        int randomFreeCell = availableMoves.at(rand() % availableMoves.size());
+        int c = randomFreeCell % 10;
+        int r = (randomFreeCell - c) / 10;
+        board[r][c] = current_color;
+        std::stringstream ss;
+        ss << static_cast<char>('A' + r);
+        ss << static_cast<char>('a' + c);
+        std::cout << ss.str() << std::endl
+                  << std::flush;
     }
 };
