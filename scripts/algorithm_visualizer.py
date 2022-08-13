@@ -4,10 +4,12 @@ from tkinter import CURRENT
 from graphics import *
 
 BLOCK_SIZE = 50
-CURRENT_COLOR = '1'
-CELL_COLOR = '#e43326'
+CURRENT_COLOR = 1
 
-COLORS = ["", "red", "green", "blue", "white", "black", "pink", "cyan"]
+win = GraphWin("CodeCup 2023 - Algorithm Visualizer", 10 * BLOCK_SIZE, 10 * BLOCK_SIZE)
+win.setBackground("white")
+
+COLORS = ["", "white", "#ffff43", "#ff8800", "#bb0100", "#bb01bb", "#0088ff", "black"]
 
 ds = [  [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
@@ -17,21 +19,16 @@ ds = [  [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0] ]
 
-SCORE_ROW_0 = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * 2.5), "0")
-SCORE_ROW_1 = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * 3.5), "0")
-SCORE_ROW_2 = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * 4.5), "0")
-SCORE_ROW_3 = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * 5.5), "0")
-SCORE_ROW_4 = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * 6.5), "0")
-SCORE_ROW_5 = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * 7.5), "0")
-SCORE_ROW_6 = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * 8.5), "0")
+ROW_SCORES = []
+COL_SCORES = []
 
-SCORE_COL_0 = Text(Point(BLOCK_SIZE * 1.5, BLOCK_SIZE * 9.5), "0")
-SCORE_COL_1 = Text(Point(BLOCK_SIZE * 2.5, BLOCK_SIZE * 9.5), "0")
-SCORE_COL_2 = Text(Point(BLOCK_SIZE * 3.5, BLOCK_SIZE * 9.5), "0")
-SCORE_COL_3 = Text(Point(BLOCK_SIZE * 4.5, BLOCK_SIZE * 9.5), "0")
-SCORE_COL_4 = Text(Point(BLOCK_SIZE * 5.5, BLOCK_SIZE * 9.5), "0")
-SCORE_COL_5 = Text(Point(BLOCK_SIZE * 6.5, BLOCK_SIZE * 9.5), "0")
-SCORE_COL_6 = Text(Point(BLOCK_SIZE * 7.5, BLOCK_SIZE * 9.5), "0")
+for i in range(0, 7):
+    row = Text(Point(BLOCK_SIZE * 8.5, BLOCK_SIZE * (i + 2.5)), "0")
+    row.setSize(20)
+    ROW_SCORES.append(row)
+    col = Text(Point(BLOCK_SIZE * (i + 1.5), BLOCK_SIZE * 9.5), "0")
+    col.setSize(20)
+    COL_SCORES.append(col)
 
 def mouseCallback(clickedPoint):
     global CURRENT_COLOR
@@ -40,20 +37,17 @@ def mouseCallback(clickedPoint):
     row = int(clickedPoint.y/BLOCK_SIZE)
 
     if row == 0:
-        CURRENT_COLOR = str(column)
+        CURRENT_COLOR = column
 
-    row = row - 1
+    row = row - 2
     column = column - 1
     if row in range(0, 7) and column in range(0, 7):
-        c = Circle(Point(column * BLOCK_SIZE + BLOCK_SIZE + BLOCK_SIZE/2, row * BLOCK_SIZE + BLOCK_SIZE + BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-        c.setFill(COLORS[int(CURRENT_COLOR)])
+        c = Circle(Point((column + 1) * BLOCK_SIZE + BLOCK_SIZE/2, (row + 2) * BLOCK_SIZE + BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
+        c.setFill(COLORS[CURRENT_COLOR])
         c.draw(win)
-        ds[row][column] = int(CURRENT_COLOR)
+        ds[row][column] = CURRENT_COLOR
 
     update_scores()
-
-win = GraphWin("CodeCup 2023 - Algorithm Visualizer", 10 * BLOCK_SIZE, 10 * BLOCK_SIZE)
-win.setMouseHandler(mouseCallback)
 
 class Cell:
     def __init__(self, topLeft, size):
@@ -62,92 +56,70 @@ class Cell:
 
         self.shape = Rectangle(topLeft, Point(topLeft.x + size, topLeft.y + size))
         self.shape.setWidth(1)
-        self.shape.setFill("grey")
+        self.shape.setFill("#dddddd")
 
     def Draw(self, window):
         self.shape.draw(window)
 
+def draw_color_picker():
+    for p in range(1, 8):
+        c = Circle(Point(BLOCK_SIZE * (p + 0.5), BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
+        c.setFill(COLORS[p])
+        c.draw(win)
+
 def draw_static_elements():
-    c = Circle(Point(BLOCK_SIZE * 1.5, BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-    c.setFill("red")
-    c.draw(win)
+    draw_color_picker()
 
-    c = Circle(Point(BLOCK_SIZE * 2.5, BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-    c.setFill("green")
-    c.draw(win)
+    Text(Point(BLOCK_SIZE * 1.5, BLOCK_SIZE * 1.8), "a").draw(win)
+    Text(Point(BLOCK_SIZE * 2.5, BLOCK_SIZE * 1.8), "b").draw(win)
+    Text(Point(BLOCK_SIZE * 3.5, BLOCK_SIZE * 1.8), "c").draw(win)
+    Text(Point(BLOCK_SIZE * 4.5, BLOCK_SIZE * 1.8), "d").draw(win)
+    Text(Point(BLOCK_SIZE * 5.5, BLOCK_SIZE * 1.8), "e").draw(win)
+    Text(Point(BLOCK_SIZE * 6.5, BLOCK_SIZE * 1.8), "f").draw(win)
+    Text(Point(BLOCK_SIZE * 7.5, BLOCK_SIZE * 1.8), "g").draw(win)
 
-    c = Circle(Point(BLOCK_SIZE * 3.5, BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-    c.setFill("blue")
-    c.draw(win)
-
-    c = Circle(Point(BLOCK_SIZE * 4.5, BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-    c.setFill("white")
-    c.draw(win)
-
-    c = Circle(Point(BLOCK_SIZE * 5.5, BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-    c.setFill("black")
-    c.draw(win)
-
-    c = Circle(Point(BLOCK_SIZE * 6.5, BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-    c.setFill("pink")
-    c.draw(win)
-
-    c = Circle(Point(BLOCK_SIZE * 7.5, BLOCK_SIZE/2), BLOCK_SIZE * 0.4)
-    c.setFill("cyan")
-    c.draw(win)
-
-    Text(Point(BLOCK_SIZE * 1.5, BLOCK_SIZE/2 + BLOCK_SIZE), "a").draw(win)
-    Text(Point(BLOCK_SIZE * 2.5, BLOCK_SIZE/2 + BLOCK_SIZE), "b").draw(win)
-    Text(Point(BLOCK_SIZE * 3.5, BLOCK_SIZE/2 + BLOCK_SIZE), "c").draw(win)
-    Text(Point(BLOCK_SIZE * 4.5, BLOCK_SIZE/2 + BLOCK_SIZE), "d").draw(win)
-    Text(Point(BLOCK_SIZE * 5.5, BLOCK_SIZE/2 + BLOCK_SIZE), "e").draw(win)
-    Text(Point(BLOCK_SIZE * 6.5, BLOCK_SIZE/2 + BLOCK_SIZE), "f").draw(win)
-    Text(Point(BLOCK_SIZE * 7.5, BLOCK_SIZE/2 + BLOCK_SIZE), "g").draw(win)
-
-    Text(Point(BLOCK_SIZE/2, BLOCK_SIZE * 1.5 + BLOCK_SIZE), "A").draw(win)
-    Text(Point(BLOCK_SIZE/2, BLOCK_SIZE * 2.5 + BLOCK_SIZE), "B").draw(win)
-    Text(Point(BLOCK_SIZE/2, BLOCK_SIZE * 3.5 + BLOCK_SIZE), "C").draw(win)
-    Text(Point(BLOCK_SIZE/2, BLOCK_SIZE * 4.5 + BLOCK_SIZE), "D").draw(win)
-    Text(Point(BLOCK_SIZE/2, BLOCK_SIZE * 5.5 + BLOCK_SIZE), "E").draw(win)
-    Text(Point(BLOCK_SIZE/2, BLOCK_SIZE * 6.5 + BLOCK_SIZE), "F").draw(win)
-    Text(Point(BLOCK_SIZE/2, BLOCK_SIZE * 7.5 + BLOCK_SIZE), "G").draw(win)
+    Text(Point(BLOCK_SIZE * 0.8, BLOCK_SIZE * 1.5 + BLOCK_SIZE), "A").draw(win)
+    Text(Point(BLOCK_SIZE * 0.8, BLOCK_SIZE * 2.5 + BLOCK_SIZE), "B").draw(win)
+    Text(Point(BLOCK_SIZE * 0.8, BLOCK_SIZE * 3.5 + BLOCK_SIZE), "C").draw(win)
+    Text(Point(BLOCK_SIZE * 0.8, BLOCK_SIZE * 4.5 + BLOCK_SIZE), "D").draw(win)
+    Text(Point(BLOCK_SIZE * 0.8, BLOCK_SIZE * 5.5 + BLOCK_SIZE), "E").draw(win)
+    Text(Point(BLOCK_SIZE * 0.8, BLOCK_SIZE * 6.5 + BLOCK_SIZE), "F").draw(win)
+    Text(Point(BLOCK_SIZE * 0.8, BLOCK_SIZE * 7.5 + BLOCK_SIZE), "G").draw(win)
 
 def start():
     draw_static_elements()
     update_scores()
-
+    win.setMouseHandler(mouseCallback)
     for i in range(1, 8):
         for j in range(1, 8):
             Cell(Point(BLOCK_SIZE * i, BLOCK_SIZE * j + BLOCK_SIZE), BLOCK_SIZE).Draw(win)
-
     win.mainloop()
+
+def get_score_on_line(game_line):
+    score = 0
+    for s in range(0, 6):
+        for e in range(s + 2, 8):
+            if 0 in game_line[s:e]:
+                continue
+            lr = game_line[s:e]
+            rl = game_line[s:e]
+            rl.reverse()
+            if lr == rl:
+                score = score + (e - s)
+    return score
 
 def update_scores():
     global ds
-    SCORE_ROW_0.setText(str(ds[0][0] + ds[0][1] + ds[0][2] + ds[0][3] + ds[0][4] + ds[0][5] + ds[0][6]))
+    global ROW_SCORES
+    global COL_SCORES
 
-    SCORE_ROW_0.undraw()
-    SCORE_ROW_0.draw(win)
-    SCORE_ROW_1.undraw()
-    SCORE_ROW_1.draw(win)
-    SCORE_ROW_2.undraw()
-    SCORE_ROW_2.draw(win)
-    SCORE_ROW_3.undraw()
-    SCORE_ROW_3.draw(win)
-    SCORE_ROW_4.undraw()
-    SCORE_ROW_4.draw(win)
-    SCORE_ROW_5.undraw()
-    SCORE_ROW_5.draw(win)
-    SCORE_ROW_6.undraw()
-    SCORE_ROW_6.draw(win)
-
-    SCORE_COL_0.draw(win)
-    SCORE_COL_1.draw(win)
-    SCORE_COL_2.draw(win)
-    SCORE_COL_3.draw(win)
-    SCORE_COL_4.draw(win)
-    SCORE_COL_5.draw(win)
-    SCORE_COL_6.draw(win)
+    for i in range(0, 7):
+        ROW_SCORES[i].setText(str(get_score_on_line(ds[i])))
+        ROW_SCORES[i].undraw()
+        ROW_SCORES[i].draw(win)
+        COL_SCORES[i].setText(str(get_score_on_line([row[i] for row in ds])))
+        COL_SCORES[i].undraw()
+        COL_SCORES[i].draw(win)
 
 if __name__ == "__main__":
     start()

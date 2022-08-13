@@ -46,7 +46,8 @@ public:
     virtual void parse(const std::string &input) override
     {
         current_color = std::stoi(input.substr(0, 1));
-        board[input[1] - 'A'][input[2] - 'a'] = current_color;
+        // board[input[1] - 'A'][input[2] - 'a'] = current_color;
+        board[LETTER_TO_ROW(input[1])][LETTER_TO_COL(input[2])] = current_color;
         answer = input.substr(1, 3) + input.substr(1, 3);
     }
 
@@ -74,7 +75,7 @@ public:
         }
         else
         {
-            std::swap(board[input[0] - 'A'][input[1] - 'a'], board[input[2] - 'A'][input[3] - 'a']);
+            std::swap(board[LETTER_TO_ROW(input[0])][LETTER_TO_COL(input[1])], board[LETTER_TO_ROW(input[2])][LETTER_TO_COL(input[3])]);
             is_update = true;
         }
     }
@@ -100,8 +101,8 @@ public:
         int r = (randomFreeCell - c) / 10;
         board[r][c] = current_color;
         std::stringstream ss;
-        ss << static_cast<char>('A' + r);
-        ss << static_cast<char>('a' + c);
+        ss << ROW_TO_LETTER(r);
+        ss << COL_TO_LETTER(c);
         std::cout << ss.str() << std::endl
                   << std::flush;
     }

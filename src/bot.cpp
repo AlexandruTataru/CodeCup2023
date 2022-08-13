@@ -1,20 +1,22 @@
 #include <lib.hpp>
 
+#include <memory>
+
 int main()
 {
     std::string input;
     std::cin >> input;
 
-    Player *player;
+    std::unique_ptr<Player> player;
 
     if (input.compare(KEYWORD_START) == 0)
     {
-        player = new Chaos();
+        player = std::unique_ptr<Player>(std::make_unique<Chaos>());
         std::cin >> input;
     }
     else
     {
-        player = new Order();
+        player = std::unique_ptr<Player>(std::make_unique<Order>());
     }
 
     while (input.compare(KEYWORD_QUIT) != 0)
