@@ -16,4 +16,3 @@ cp ../../build/src/bot .
 ./competition.sh bot player1 player2 player3 > competition.out
 tail -4 competition.out
 cd ../..
-rm -rf ./build

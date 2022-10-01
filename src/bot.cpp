@@ -21,8 +21,13 @@ int main()
 
     while (input.compare(KEYWORD_QUIT) != 0)
     {
-        player->parse(input);
-        player->respond();
+        std::string response = player->process(input);
+
+        if (!response.empty())
+        {
+            std::cout << response << std::endl
+                      << std::flush;
+        }
         std::cin >> input;
     }
 
